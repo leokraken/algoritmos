@@ -1,0 +1,670 @@
+%%--------------------------------%%
+%%    File created by KRAKEN      %%
+%%--------------------------------%%
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{numprint} 
+\usepackage{array,xstring}
+\usepackage{pdflscape}
+\usepackage{array}
+\usepackage{pgffor}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[section]{placeins}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{verbatim} 
+\usepackage{caption}
+\usepackage{varwidth}
+
+\DeclareCaptionFormat{myformat}{%
+  % #1: label (e.g. "Table 1")
+  % #2: separator (e.g. ": ")
+  % #3: caption text
+  \begin{varwidth}{\linewidth}%
+    \centering
+    #1#2#3%
+  \end{varwidth}%
+}
+
+
+%%COMANDOS
+\newcommand{\writetable}[5]{ %numerocaso,algoritmo, pc, pm, numind
+\captionsetup{format=myformat, labelsep=newline}
+
+\subsection{Caso #1:}
+\begin{table}[!htb]
+\begin{center}
+  \begin{tabular}{|l | r | r | N{5}{4} | n{5}{4} | n{5}{4} | N{5}{4} | l|}
+  \hline
+
+  \multicolumn{1}{|l}{Instancia}&
+  \multicolumn{1}{|c}{$F_{OPT}$}&
+  \multicolumn{1}{|c}{$F_{BEST}$}&
+  \multicolumn{1}{|c}{$F_{AVG}$}&
+  \multicolumn{1}{|c}{$\sigma$}&
+  \multicolumn{1}{|c}{$T_{AVG}$}&
+  \multicolumn{1}{|c}{$DA$}&
+  \multicolumn{1}{|c|}{Normal}\tabularnewline
+  \hline
+
+  \input{./tablas/tabla#1-#2.tex}
+
+  \hline
+  \end{tabular}
+\end{center}
+
+\IfEqCase{#2}{%
+        {GA}{
+        \caption{
+        $P_{C}=#3, P_{M}=#4, \#Individuos=#5$ \newline
+        (*) $\sigma=0$  No definido DA, se asume Normalidad.}
+        }
+        {CHC}{
+        \caption{
+        $P_{C}=#3, P_{R}=#4 , \#Individuos=#5$ \newline
+        (*) $\sigma=0$  No definido DA, se asume Normalidad.}
+        }
+        % you can add more cases here as desired
+    }
+
+\end{table}
+
+}
+
+\newcommand{\writetableBest}[5]{ %numerocaso,algoritmo, pc, pm, numind
+\captionsetup{format=myformat, labelsep=newline}
+
+\subsection{Caso 5000 Generaciones:}
+\begin{table}[!htb]
+\begin{center}
+  \begin{tabular}{|l | r | r | N{5}{4} | n{5}{4} | n{5}{4} | N{5}{4} | l|}
+  \hline
+
+  \multicolumn{1}{|l}{Instancia}&
+  \multicolumn{1}{|c}{$F_{OPT}$}&
+  \multicolumn{1}{|c}{$F_{BEST}$}&
+  \multicolumn{1}{|c}{$F_{AVG}$}&
+  \multicolumn{1}{|c}{$\sigma$}&
+  \multicolumn{1}{|c}{$T_{AVG}$}&
+  \multicolumn{1}{|c}{$DA$}&
+  \multicolumn{1}{|c|}{Normal}\tabularnewline
+  \hline
+
+  \input{./tablas/tabla#1-#2.tex}
+
+  \hline
+  \end{tabular}
+\end{center}
+
+\IfEqCase{#2}{%
+        {GA}{
+        \caption{
+        $P_{C}=#3, P_{M}=#4, \#Individuos=#5$ \newline
+        (*) $\sigma=0$  No definido DA, se asume Normalidad.}
+        }
+        {CHC}{
+        \caption{
+        $P_{C}=#3, P_{R}=#4 , \#Individuos=#5$ \newline
+        (*) $\sigma=0$  No definido DA, se asume Normalidad.}
+        }
+        % you can add more cases here as desired
+    }
+
+\end{table}
+
+}
+
+
+\newcommand{\writetableglobal}[5]{
+
+\captionsetup{format=myformat, labelsep=newline}
+\subsection{Caso #1:}
+
+\begin{table}[!ht]
+\begin{center}
+  \begin{tabular}{|l|r|r|n{5}{4}|n{5}{4}|n{5}{4}|n{5}{4}|n{5}{4}|n{5}{4}|n{5}{4}|n{5}{4}|l|l|}
+  \hline
+  \multicolumn{1}{|l}{}&
+  \multicolumn{2}{|c}{$F_{BEST}$}&
+  \multicolumn{2}{|c}{$F_{AVG}$}&
+  \multicolumn{2}{|c}{$\sigma$}&
+  \multicolumn{2}{|c|}{$T_{AVG}$}
+  %\multicolumn{2}{|c}{DA}&
+  %\multicolumn{2}{|c|}{Normal}
+  \tabularnewline
+
+   
+  \multicolumn{1}{|l}{Instancia}&
+  \multicolumn{1}{|c}{GA}&
+  \multicolumn{1}{c}{CHC}&
+  \multicolumn{1}{|c}{GA}&
+  \multicolumn{1}{c}{CHC}&
+  \multicolumn{1}{|c}{GA}&
+  \multicolumn{1}{c}{CHC}&
+  \multicolumn{1}{|c}{GA}&
+  \multicolumn{1}{c|}{CHC}
+  %\multicolumn{1}{|c}{GA}&
+  %\multicolumn{1}{c}{CHC}&
+  %\multicolumn{1}{|c}{GA}&
+  %\multicolumn{1}{c|}{CHC}
+  \tabularnewline
+  \hline
+  
+  \input{./tablas/tabla#1-GA-CHC.tex}
+  
+  \hline
+  \end{tabular}
+  
+\end{center}
+\caption{
+$P_{C}=#2, P_{M}=#3, P_{R}=#5 \#Individuos=#4$ %\newline
+%(*) $\sigma=0$  No definido DA, se asume Normalidad.
+}
+\end{table}
+
+\newpage
+}
+
+
+
+\newcommand{\statistics}[5]{
+
+\captionsetup{format=myformat, labelsep=newline}
+
+\begin{table}[!ht]
+\begin{center}
+  \begin{tabular}{|l|n{5}{4}|l|}
+  \hline
+  \multicolumn{1}{|l}{Instancia}&
+  \multicolumn{1}{|c}{$p-value$}&
+  \multicolumn{1}{|c|}{Test}
+  \tabularnewline
+
+  \hline
+  
+  \input{./tablas/tabla#1t_u-GA-CHC.tex}
+  
+  \hline
+  \end{tabular}
+  
+\end{center}
+\caption{
+$P_{C}=#2, P_{M}=#3, P_{R}=#5, \#Individuos=#4$ \newline
+}
+\end{table}
+
+\newpage
+}
+
+
+
+\newcommand{\writetablecases}{
+
+\begin{table}[!ht]
+ \begin{center}
+  \begin{tabular}{|l|l|l|l|l|n{5}{4}|n{5}{4}|n{5}{4}|n{5}{4}|}
+  \hline
+   
+  \multicolumn{1}{|l}{Instancia}&
+  \multicolumn{1}{|c}{}&
+  \multicolumn{1}{|c}{}&   
+  \multicolumn{1}{|c}{}&
+  \multicolumn{1}{|c}{}&    
+  \multicolumn{2}{|c|}{GA}&
+  \multicolumn{2}{c|}{CHC}
+  \tabularnewline
+
+  \multicolumn{1}{|l}{}&
+  \multicolumn{1}{|l}{$P_{C}$}&
+  \multicolumn{1}{|l}{$P_{M}$}&
+  \multicolumn{1}{|l}{$\#ind$}&
+  \multicolumn{1}{|l}{$P_{D}$}& 
+  \multicolumn{1}{|c}{$F_{AVG}$}&
+  \multicolumn{1}{c|}{$T_{AVG}$}&
+  \multicolumn{1}{c}{$F_{AVG}$}&
+  \multicolumn{1}{c|}{$T_{AVG}$}
+  \tabularnewline
+  \hline
+  
+  \input{./tablas/Todos_casos.tex}
+  
+  \hline
+  \end{tabular}
+\end{center}
+\end{table}
+
+\newpage
+}
+
+
+
+\newcommand{\figura}[2]{
+\begin{figure}[!h]
+  \centering
+    \includegraphics[width=0.5\textwidth]{#1}
+  \caption{#2}
+\end{figure} 
+}
+
+\title{}
+\author{}
+
+\hypersetup{
+    pdftitle={Shop-Job Scheduling},
+    bookmarksnumbered=true,     
+    bookmarksopen=true,         
+    bookmarksopenlevel=1,       
+    colorlinks=true,            
+    pdfstartview=Fit,           
+    pdfpagemode=UseOutlines,    % this is the option you were lookin for
+    pdfpagelayout=TwoPageRight
+}
+
+
+
+\begin{document}
+\title{Job Shop Scheduling\\ Algoritmos Evolutivos\\ Estadísticas \\ Grupo 12}
+
+
+\author{
+Sergio~Bonilla, 4.430.955-3\\
+Leonardo~Clavijo, 5.054.830-5\\
+\{serginhobonilla, joleocl\}@gmail.com
+}
+
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+\newpage
+ 
+\section{Aclaraciones:}
+En la sección \ref{cap:chcga}, disponemos de dos tablas para cada caso. La primera realiza una comparación con los parámentros mencionados en el informe primario. La segunda tabla corresponde al estudio estadístico secundario, es decir, en la primera tabla determinamos si ambas muestras tanto de CHC como de GA son normales, en caso de que ambas lo sean, se procede a realizar el test de t-student(t-test), en caso contrario se utiliza el test de Mann-Whitney para el estudio de la mediana de las dos muestras.
+
+\subsection{Normalidad}
+Se utilizó el test de D Agostino para determinar a través del estadístico si la muestra es normal.
+
+\subsection{t-test}
+En el caso que ambas muestras para cada instancia sean normales, se aplica el test de student, con un valor de $\alpha =0.05$. Se determina el $p-valor$, sujeto a la hipótesis $H_{0}=\mu_{1}-\mu_{2}>0$, si $p-valor > \alpha$ entonces aceptamos $H_{0}$, caso contrario la rechazamos.
+Este test lo utilizamos para determinar la media de las muestras, con $H_0$ estamos determinando que la media del espacio muestral de GA es mayor que de CHC, esto es $mean(X_1)>mean(X_2)$.
+\subsection{u-test}
+También conocido como test de Mann-Whitney, se aplica la misma hipótesis que en el caso anterior, con el mismo valor de $\alpha$. Este test detecta cual de las medianas de los conjuntos es mayor, $mediana(X_1)>mediana(X_2)$. 
+
+\newpage
+
+%\foreach \n in {apples,burgers,cake}{Let's eat \n.\par}
+%%config np
+\npdecimalsign{.}
+\nprounddigits{4}
+
+\section{GA}
+\writetable{1}{GA}{0.6}{0.01}{50} %1
+\writetable{2}{GA}{$0.7$}{$0.01$}{50}%4
+\newpage
+\writetable{3}{GA}{$0.8$}{$0.01$}{50}%5
+\writetable{4}{GA}{$0.6$}{$0.05$}{50}%3
+\newpage
+
+\clearpage
+
+\writetable{5}{GA}{$0.7$}{$0.05$}{50}%3
+\writetable{6}{GA}{$0.8$}{$0.05$}{50}%3
+\newpage
+\writetable{7}{GA}{$0.6$}{$0.1$}{50}%3
+\writetable{8}{GA}{$0.7$}{$0.1$}{50}%3
+\newpage
+\writetable{9}{GA}{$0.8$}{$0.1$}{50}%3
+\writetable{10}{GA}{$0.6$}{$0.01$}{100}%2
+
+\clearpage
+
+
+\writetable{11}{GA}{$0.7$}{$0.01$}{100}%3
+\newpage
+\writetable{12}{GA}{$0.8$}{$0.01$}{100}
+\writetable{13}{GA}{$0.6$}{$0.05$}{100}
+\newpage
+\writetable{14}{GA}{$0.7$}{$0.05$}{100}
+\writetable{15}{GA}{$0.8$}{$0.05$}{100}
+
+\clearpage
+
+
+\newpage
+\writetable{16}{GA}{$0.6$}{$0.1$}{100}
+\writetable{17}{GA}{$0.7$}{$0.1$}{100}
+\newpage
+\writetable{18}{GA}{$0.8$}{$0.1$}{100}
+\writetable{19}{GA}{$0.6$}{$0.01$}{200}%3
+
+\clearpage
+
+
+\writetable{20}{GA}{$0.7$}{$0.01$}{200}
+\newpage
+\writetable{21}{GA}{$0.8$}{$0.01$}{200}
+\writetable{22}{GA}{$0.6$}{$0.05$}{200}
+\newpage
+
+\clearpage
+
+
+\writetable{23}{GA}{$0.7$}{$0.05$}{200}
+\writetable{24}{GA}{$0.8$}{$0.05$}{200}
+\newpage
+\writetable{25}{GA}{$0.6$}{$0.1$}{200}
+
+\clearpage
+
+
+\writetable{26}{GA}{$0.7$}{$0.1$}{200}
+\newpage
+\writetable{27}{GA}{$0.8$}{$0.1$}{200}
+
+\clearpage
+\writetableBest{28}{GA}{$0.8$}{$0.9$}{5000}
+
+
+
+
+\section{CHC}
+\writetable{1}{CHC}{0.6}{0.5}{50} %1
+\writetable{2}{CHC}{$0.7$}{$0.5$}{50}%4
+\newpage
+\writetable{3}{CHC}{$0.8$}{$0.5$}{50}%5
+\writetable{4}{CHC}{$0.6$}{$0.7$}{50}%3
+\newpage
+
+\clearpage
+
+\writetable{5}{CHC}{$0.7$}{$0.7$}{50}%3
+\writetable{6}{CHC}{$0.8$}{$0.7$}{50}%3
+\newpage
+\writetable{7}{CHC}{$0.6$}{$0.9$}{50}%3
+\writetable{8}{CHC}{$0.7$}{$0.9$}{50}%3
+\newpage
+\writetable{9}{CHC}{$0.8$}{$0.9$}{50}%3
+\writetable{10}{CHC}{$0.6$}{$0.5$}{100}%2
+
+\clearpage
+
+
+\writetable{11}{CHC}{$0.7$}{$0.5$}{100}%3
+\newpage
+\writetable{12}{CHC}{$0.8$}{$0.5$}{100}
+\writetable{13}{CHC}{$0.6$}{$0.7$}{100}
+\newpage
+\writetable{14}{CHC}{$0.7$}{$0.7$}{100}
+\writetable{15}{CHC}{$0.8$}{$0.7$}{100}
+
+\clearpage
+
+
+\newpage
+\writetable{16}{CHC}{$0.6$}{$0.9$}{100}
+\writetable{17}{CHC}{$0.7$}{$0.9$}{100}
+\newpage
+\writetable{18}{CHC}{$0.8$}{$0.9$}{100}
+\writetable{19}{CHC}{$0.6$}{$0.5$}{200}%3
+
+\clearpage
+
+
+\writetable{20}{CHC}{$0.7$}{$0.5$}{200}
+\newpage
+\writetable{21}{CHC}{$0.8$}{$0.5$}{200}
+\writetable{22}{CHC}{$0.6$}{$0.7$}{200}
+\newpage
+
+\clearpage
+
+
+\writetable{23}{CHC}{$0.7$}{$0.7$}{200}
+\writetable{24}{CHC}{$0.8$}{$0.7$}{200}
+\newpage
+\writetable{25}{CHC}{$0.6$}{$0.9$}{200}
+
+\clearpage
+
+
+\writetable{26}{CHC}{$0.7$}{$0.9$}{200}
+\newpage
+\writetable{27}{CHC}{$0.8$}{$0.9$}{200}
+
+
+
+\clearpage
+
+
+
+\begin{landscape}
+
+\section{GA-CHC}
+\label{cap:chcga}
+
+\writetableglobal{1}{0.6}{0.01}{50}{0.5}
+\statistics{1}{0.6}{0.01}{50}{0.5}
+\writetableglobal{2}{$0.7$}{$0.01$}{50}{0.5}
+\statistics{2}{$0.7$}{$0.01$}{50}{0.5}
+
+\writetableglobal{3}{$0.8$}{$0.01$}{50}{0.5}
+\statistics{3}{$0.8$}{$0.01$}{50}{0.5}
+
+\writetableglobal{4}{$0.6$}{$0.05$}{50}{0.7}
+\statistics{4}{$0.6$}{$0.05$}{50}{0.7}
+
+\clearpage
+
+\writetableglobal{5}{$0.7$}{$0.05$}{50}{0.7}
+\statistics{5}{$0.7$}{$0.05$}{50}{0.7}
+
+\writetableglobal{6}{$0.8$}{$0.05$}{50}{0.7}
+\statistics{6}{$0.8$}{$0.05$}{50}{0.7}
+
+\writetableglobal{7}{$0.6$}{$0.1$}{50}{0.9}
+\statistics{7}{$0.6$}{$0.1$}{50}{0.9}
+
+\writetableglobal{8}{$0.7$}{$0.1$}{50}{0.9}
+\statistics{8}{$0.7$}{$0.1$}{50}{0.9}
+
+\writetableglobal{9}{$0.8$}{$0.1$}{50}{0.9}
+\statistics{9}{$0.8$}{$0.1$}{50}{0.9}
+
+\writetableglobal{10}{$0.6$}{$0.01$}{100}{0.5}
+\statistics{10}{$0.6$}{$0.01$}{100}{0.5}
+\clearpage
+
+
+\writetableglobal{11}{$0.7$}{$0.01$}{100}{0.5}
+\statistics{11}{$0.7$}{$0.01$}{100}{0.5}
+
+\writetableglobal{12}{$0.8$}{$0.01$}{100}{0.5}
+\statistics{12}{$0.8$}{$0.01$}{100}{0.5}
+
+\writetableglobal{13}{$0.6$}{$0.05$}{100}{0.7}
+\statistics{13}{$0.6$}{$0.05$}{100}{0.7}
+
+\writetableglobal{14}{$0.7$}{$0.05$}{100}{0.7}
+\statistics{14}{$0.7$}{$0.05$}{100}{0.7}
+
+\writetableglobal{15}{$0.8$}{$0.05$}{100}{0.7}
+\statistics{15}{$0.8$}{$0.05$}{100}{0.7}
+\clearpage
+
+\writetableglobal{16}{$0.6$}{$0.1$}{100}{0.9}
+\statistics{16}{$0.6$}{$0.1$}{100}{0.9}
+
+\writetableglobal{17}{$0.7$}{$0.1$}{100}{0.9}
+\statistics{17}{$0.7$}{$0.1$}{100}{0.9}
+
+
+\writetableglobal{18}{$0.8$}{$0.1$}{100}{0.9}
+\statistics{18}{$0.8$}{$0.1$}{100}{0.9}
+
+\writetableglobal{19}{$0.6$}{$0.01$}{200}{0.5}
+\statistics{19}{$0.6$}{$0.01$}{200}{0.5}
+\clearpage
+
+
+\writetableglobal{20}{$0.7$}{$0.01$}{200}{0.5}
+\statistics{20}{$0.7$}{$0.01$}{200}{0.5}
+
+
+\writetableglobal{21}{$0.8$}{$0.01$}{200}{0.5}
+\statistics{21}{$0.8$}{$0.01$}{200}{0.5}
+
+\writetableglobal{22}{$0.6$}{$0.05$}{200}{0.7}
+\statistics{22}{$0.6$}{$0.05$}{200}{0.7}
+
+\clearpage
+
+
+\writetableglobal{23}{$0.7$}{$0.05$}{200}{0.7}
+\statistics{23}{$0.7$}{$0.05$}{200}{0.7}
+
+\writetableglobal{24}{$0.8$}{$0.05$}{200}{0.7}
+\statistics{24}{$0.8$}{$0.05$}{200}{0.7}
+
+\writetableglobal{25}{$0.6$}{$0.1$}{200}{0.9}
+\statistics{25}{$0.6$}{$0.1$}{200}{0.9}
+\clearpage
+
+
+\writetableglobal{26}{$0.7$}{$0.1$}{200}{0.9}
+\statistics{26}{$0.7$}{$0.1$}{200}{0.9}
+
+\writetableglobal{27}{$0.8$}{$0.1$}{200}{0.9}
+\statistics{27}{$0.8$}{$0.1$}{200}{0.9}
+\end{landscape}
+
+\begin{comment}
+\begin{landscape}
+
+\section{GA-CHC}
+\label{cap:chcga}
+
+\writetableglobal{1}{$0.6$}{$0.01$}{50}
+\statistics{1}{$0.6$}{$0.01$}{50}
+
+\writetableglobal{2}{$0.6$}{$0.01$}{100}
+\statistics{2}{$0.6$}{$0.01$}{100}
+
+\writetableglobal{3}{$0.6$}{$0.01$}{200}
+\statistics{3}{$0.6$}{$0.01$}{200}
+
+\writetableglobal{4}{$0.7$}{$0.01$}{50}%4
+\statistics{4}{$0.7$}{$0.01$}{50}%4
+
+\writetableglobal{5}{$0.8$}{$0.01$}{50}%5
+\statistics{5}{$0.8$}{$0.01$}{50}%5
+
+
+\writetableglobal{6}{$0.6$}{$0.05$}{50}%3
+\statistics{6}{$0.6$}{$0.05$}{50}%3
+
+
+\writetableglobal{7}{$0.7$}{$0.05$}{50}%3
+\statistics{7}{$0.7$}{$0.05$}{50}%3
+
+
+\writetableglobal{8}{$0.8$}{$0.05$}{50}%3
+\statistics{8}{$0.8$}{$0.05$}{50}%3
+
+
+\writetableglobal{9}{$0.6$}{$0.1$}{50}%3
+\statistics{9}{$0.6$}{$0.1$}{50}%3
+
+\writetableglobal{10}{$0.7$}{$0.1$}{50}%3
+\statistics{10}{$0.7$}{$0.1$}{50}%3
+
+\writetableglobal{11}{$0.8$}{$0.1$}{50}%3
+\statistics{11}{$0.8$}{$0.1$}{50}%3
+
+\writetableglobal{12}{$0.7$}{$0.01$}{100}
+\statistics{12}{$0.7$}{$0.01$}{100}
+
+\writetableglobal{13}{$0.8$}{$0.01$}{100}
+\statistics{13}{$0.8$}{$0.01$}{100}
+
+\writetableglobal{14}{$0.6$}{$0.05$}{100}
+\statistics{14}{$0.6$}{$0.05$}{100}
+
+\writetableglobal{15}{$0.7$}{$0.05$}{100}
+\statistics{15}{$0.7$}{$0.05$}{100}
+
+\writetableglobal{16}{$0.8$}{$0.05$}{100}
+\statistics{16}{$0.8$}{$0.05$}{100}
+
+\writetableglobal{17}{$0.6$}{$0.1$}{100}
+\statistics{17}{$0.6$}{$0.1$}{100}
+
+\writetableglobal{18}{$0.7$}{$0.1$}{100}
+\statistics{18}{$0.7$}{$0.1$}{100}
+
+\writetableglobal{19}{$0.8$}{$0.1$}{100}
+\statistics{19}{$0.8$}{$0.1$}{100}
+
+\writetableglobal{20}{$0.7$}{$0.01$}{200}
+\statistics{20}{$0.7$}{$0.01$}{200}
+
+\writetableglobal{21}{$0.8$}{$0.01$}{200}
+\statistics{21}{$0.8$}{$0.01$}{200}
+
+\writetableglobal{22}{$0.6$}{$0.05$}{200}
+\statistics{22}{$0.6$}{$0.05$}{200}
+
+\writetableglobal{23}{$0.7$}{$0.05$}{200}
+\statistics{23}{$0.7$}{$0.05$}{200}
+
+\writetableglobal{24}{$0.8$}{$0.05$}{200}
+\statistics{24}{$0.8$}{$0.05$}{200}
+
+\writetableglobal{25}{$0.6$}{$0.1$}{200}
+\statistics{25}{$0.6$}{$0.1$}{200}
+
+\writetableglobal{26}{$0.7$}{$0.1$}{200}
+\statistics{26}{$0.7$}{$0.1$}{200}
+
+\writetableglobal{27}{$0.8$}{$0.1$}{200}
+\statistics{27}{$0.8$}{$0.1$}{200}
+
+\end{landscape}
+
+\end{comment}
+
+\section{Todos los casos:}
+\writetablecases
+
+\begin{comment}
+
+\best
+
+\newpage
+\section{Gráficas}
+\subsection{GA}
+\figura{./figuras/Graficas/GA/50IND/promedioTodasInstancias.png}{Promedio para 50 individuos}
+\figura{./figuras/Graficas/GA/100IND/promedioTodasInstancias.png}{Promedio para 100 individuos}
+\figura{./figuras/Graficas/GA/200IND/promedioTodasInstancias.png}{Promedio para 200 individuos}
+
+\newpage
+\subsection{CHC}
+\figura{./figuras/Graficas/CHC/50IND/promedioTodasInstancias.png}{Promedio para 50 individuos}
+\figura{./figuras/Graficas/CHC/100IND/promedioTodasInstancias.png}{Promedio para 100 individuos}
+\figura{./figuras/Graficas/CHC/200IND/promedioTodasInstancias.png}{Promedio para 200 individuos}
+
+\newpage
+\subsection{CHC-GA}
+\figura{./figuras/Graficas/Comparacion/comp50.png}{Promedio para 50 individuos}
+\figura{./figuras/Graficas/Comparacion/comp100.png}{Promedio para 100 individuos}
+\figura{./figuras/Graficas/Comparacion/comp200.png}{Promedio para 200 individuos}
+
+
+\end{comment}
+
+\end{document}

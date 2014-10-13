@@ -1,0 +1,244 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{numprint} 
+\usepackage{array,xstring}
+\usepackage{pdflscape}
+\usepackage{array}
+
+
+\title{}
+\author{}
+
+\begin{document}
+
+
+
+
+%\begin{abstract}
+%\end{abstract}
+
+
+\section{CHC}
+\subsection{Caso 1:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=50$. \\
+
+
+%%config np
+\npdecimalsign{.}
+\nprounddigits{4}
+
+
+\begin{table}[!ht]%[!tbp]
+\begin{center}
+\begin{tabular}{|l | r | N{5}{4} | n{5}{4} | n{5}{4} | N{5}{4} | l|}%{l r N N N N l}%{lrrrrrr}
+\hline
+
+\multicolumn{1}{|l}{Instancia}&\multicolumn{1}{|c}{$F_{BEST}$}&
+\multicolumn{1}{|c}{$F_{AVG}$}&\multicolumn{1}{|c}{$\sigma$}&
+\multicolumn{1}{|c}{$T_{AVG}$}&\multicolumn{1}{|c}{$DA$}&
+\multicolumn{1}{|c|}{Normal}\tabularnewline
+
+\hline
+\input{./tabla1-CHC.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+\subsection{Caso 2:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=100$. \\
+
+
+
+\begin{table}[!ht]%[!tbp]
+\begin{center}
+\begin{tabular}{|l | r | N{5}{4} | n{5}{4} | n{5}{4} | N{5}{4} | l|}%{l r N N N N l}%{lrrrrrr}
+\hline
+
+\multicolumn{1}{|l}{Instancia}&\multicolumn{1}{|c}{$F_{BEST}$}&
+\multicolumn{1}{|c}{$F_{AVG}$}&\multicolumn{1}{|c}{$\sigma$}&
+\multicolumn{1}{|c}{$T_{AVG}$}&\multicolumn{1}{|c}{$DA$}&
+\multicolumn{1}{|c|}{Normal}\tabularnewline
+\hline
+\input{./tabla2-CHC.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\subsection{Caso 3:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=200$. \\
+
+\begin{table}[!ht]%[!tbp]
+\begin{center}
+\begin{tabular}{|l | r | N{5}{4} | n{5}{4} | n{5}{4} | N{5}{4} | l|}%{l r N N N N l}%{lrrrrrr}
+\hline
+
+\multicolumn{1}{|l}{Instancia}&\multicolumn{1}{|c}{$F_{BEST}$}&
+\multicolumn{1}{|c}{$F_{AVG}$}&\multicolumn{1}{|c}{$\sigma$}&
+\multicolumn{1}{|c}{$T_{AVG}$}&\multicolumn{1}{|c}{$DA$}&
+\multicolumn{1}{|c|}{Normal}\tabularnewline
+\hline
+\input{./tabla3-CHC.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+%%GA
+%%
+
+\newpage
+
+\section{GA}
+\subsection{Caso 1:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=50$. \\
+
+%\npdecimalsign{.}
+%\nprounddigits{2}
+
+\begin{table}[!ht]%[!tbp]
+\begin{center}
+\begin{tabular}{|l | r | N{5}{4} | n{5}{4} | n{5}{4} | N{5}{4} | l|}%{l r N N N N l}%{lrrrrrr}
+\hline
+
+\multicolumn{1}{|l}{Instancia}&\multicolumn{1}{|c}{$F_{BEST}$}&
+\multicolumn{1}{|c}{$F_{AVG}$}&\multicolumn{1}{|c}{$\sigma$}&
+\multicolumn{1}{|c}{$T_{AVG}$}&\multicolumn{1}{|c}{$DA$}&
+\multicolumn{1}{|c|}{Normal}\tabularnewline
+\hline
+\input{./tabla1-GA.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+\subsection{Caso 2:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=100$. \\
+
+\begin{table}[!ht]%[!tbp]
+\begin{center}
+\begin{tabular}{|l | r | N{5}{4} | n{5}{4} | n{5}{4} | N{5}{4} | l|}%{l r N N N N l}%{lrrrrrr}
+\hline
+
+\multicolumn{1}{|l}{Instancia}&\multicolumn{1}{|c}{$F_{BEST}$}&
+\multicolumn{1}{|c}{$F_{AVG}$}&\multicolumn{1}{|c}{$\sigma$}&
+\multicolumn{1}{|c}{$T_{AVG}$}&\multicolumn{1}{|c}{$DA$}&
+\multicolumn{1}{|c|}{Normal}\tabularnewline
+\hline
+\input{./tabla2-GA.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+\subsection{Caso 3:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=200$. \\
+
+\begin{table}[!ht]%[!tbp]
+\begin{center}
+\begin{tabular}{|l | r | N{5}{4} | n{5}{4} | n{5}{4} | N{5}{4} | l|}%{l r N N N N l}%{lrrrrrr}
+\hline
+
+\multicolumn{1}{|l}{Instancia}&\multicolumn{1}{|c}{$F_{BEST}$}&
+\multicolumn{1}{|c}{$F_{AVG}$}&\multicolumn{1}{|c}{$\sigma$}&
+\multicolumn{1}{|c}{$T_{AVG}$}&\multicolumn{1}{|c}{$DA$}&
+\multicolumn{1}{|c|}{Normal}\tabularnewline
+\hline
+\input{./tabla3-GA.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\begin{landscape}
+
+\section{GA-CHC}
+\subsection{Caso 1:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=50$. \\
+
+
+\begin{table}[!ht]%[!tbp]
+ \begin{center}
+ \begin{tabular}{l r r n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{5} n{5}{2} l l}%{l r N N N N l}%{lrrrrrr}\hline\hline
+ \multicolumn{1}{l}{}&\multicolumn{2}{c}{F\_B}&\multicolumn{2}{c}{F\_AVG}&\multicolumn{2}{c}{$\sigma$}&\multicolumn{2}{c}{T\_AVG}&\multicolumn{2}{c}{DA}&\multicolumn{2}{c}{Normal}\tabularnewline
+
+\multicolumn{1}{l}{Instancia}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}\tabularnewline
+\hline
+\input{./tabla1-GA-CHC.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\newpage
+
+\subsection{Caso 2:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=100$. \\
+
+
+\begin{table}[!ht]%[!tbp]
+ \begin{center}
+ \begin{tabular}{l r r n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{5} n{5}{2} l l}%{l r N N N N l}%{lrrrrrr}\hline\hline
+ \multicolumn{1}{l}{}&\multicolumn{2}{c}{F\_B}&\multicolumn{2}{c}{F\_AVG}&\multicolumn{2}{c}{$\sigma$}&\multicolumn{2}{c}{T\_AVG}&\multicolumn{2}{c}{DA}&\multicolumn{2}{c}{Normal}\tabularnewline
+
+\multicolumn{1}{l}{Instancia}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}\tabularnewline
+\hline
+\input{./tabla2-GA-CHC.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\newpage
+
+\subsection{Caso 3:}
+En este caso se utilizaron los siguientes valores para los parámetros:
+$P_{C}=0.6, \#Individuos=200$. \\
+
+\begin{table}[!ht]%[!tbp]
+ \begin{center}
+ \begin{tabular}{l r r n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{2} n{5}{5} n{5}{2} l l}%{l r N N N N l}%{lrrrrrr}\hline\hline
+ \multicolumn{1}{l}{}&\multicolumn{2}{c}{F\_B}&\multicolumn{2}{c}{F\_AVG}&\multicolumn{2}{c}{$\sigma$}&\multicolumn{2}{c}{T\_AVG}&\multicolumn{2}{c}{DA}&\multicolumn{2}{c}{Normal}\tabularnewline
+
+\multicolumn{1}{l}{Instancia}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}&\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{CHC}\tabularnewline
+\hline
+\input{./tabla3-GA-CHC.tex}
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\end{landscape}
+
+
+\end{document}
